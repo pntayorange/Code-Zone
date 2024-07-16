@@ -1,0 +1,24 @@
+class Solution {
+public:
+    struct Comparator {
+        bool operator()(vector<int> const& p1, vector<int> const& p2) {
+            return p1[1] > p2[1];
+        }
+    };
+
+    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+        sort(boxTypes.begin(), boxTypes.end(), Comparator());
+        int count = 0;
+        for (vector<int>& elem : boxTypes) {
+            if (truckSize <= 0) {
+                break;
+            } else if (truckSize > elem[0]) {
+                count += elem[0] * elem[1];
+            } else {
+                count += truckSize * elem[1];
+            }
+            truckSize -= elem[0];
+        }
+        return count;
+    }
+};
