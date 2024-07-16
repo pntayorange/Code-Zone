@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int longestPalindrome(string s) {
+        unordered_map<int, int> ch;
+        for (char c : s) {
+            ch[c]++;
+        }
+        int res = 0;
+        bool tf = false;
+        for (int i = 65; i <= 122; i++) {
+            res += (ch[i] / 2) * 2;
+            if (ch[i] % 2 == 1)
+                tf = true;
+        }
+        return res + tf;
+    }
+};
