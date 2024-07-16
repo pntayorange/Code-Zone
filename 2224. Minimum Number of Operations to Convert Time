@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int convertTime(string current, string correct) {
+        int diffHour = stoi(correct.substr(0, 2)) - stoi(current.substr(0, 2));
+        int diffMin = stoi(correct.substr(3,5)) - stoi(current.substr(3,5));
+        if(diffMin<0) {diffMin = stoi(correct.substr(3,5)) + (60-stoi(current.substr(3,5))); --diffHour;}
+        diffMin += diffHour*60;
+        int ops = 0;
+        ops += diffMin/60;
+        diffMin %= 60;
+        ops += diffMin/15;
+        diffMin %= 15;
+        ops += diffMin/5;
+        diffMin %= 5;
+        ops += diffMin;
+        return ops;
+    }
+};
