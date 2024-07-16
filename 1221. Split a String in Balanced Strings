@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int balancedStringSplit(string s) {
+        unordered_map<int,int> balance;
+        int res=0;
+        for (int i=0;i<s.length();i++)
+        {
+            balance[s[i]]++;
+            if (balance[76]==balance[82]) res++;
+        }return res;
+        
+    }
+};
