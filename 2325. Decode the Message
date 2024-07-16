@@ -1,0 +1,22 @@
+class Solution {
+public:
+    string decodeMessage(string key, string message) {
+        char mapping[26] = {0};
+        char val = 'a';
+
+        for (char ch : key) {
+            if (ch != ' ' && mapping[ch - 'a'] == 0) {
+                mapping[ch - 'a'] = val++;
+            }
+        }
+
+        string ans;
+        ans.reserve(message.size());
+
+        for (char ch : message) {
+            ans.push_back(ch == ' ' ? ' ' : mapping[ch - 'a']);
+        }
+
+        return ans;
+    }
+};
