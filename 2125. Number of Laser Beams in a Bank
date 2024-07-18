@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int numberOfBeams(vector<string>& bank) {
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+        cout.tie(nullptr);
+        vector<int> line;
+        for (int i = 0; i < bank.size(); i++) {
+            int laser = 0;
+            for (int j = 0; j < bank[i].length(); j++) {
+                if (bank[i][j] == '1')
+                    laser++;
+            }
+            if (laser)
+                line.push_back(laser);
+        }
+        int beams = 0;
+        for (int i = 1; i < line.size(); i++) {
+            beams += line[i - 1] * line[i];
+        }
+        return beams;
+    }
+};
