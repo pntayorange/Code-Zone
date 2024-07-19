@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
+        pair<int, int> couple[mat.size()];
+        for (int i=0;i<mat.size();i++)
+        {
+            for (int j=1;j<mat[i].size();j++)
+            {
+                mat[i][0]+=mat[i][j];
+            }
+            couple[i].first=i;
+            couple[i].second=mat[i][0];
+        }
+         for (int i = 0; i < mat.size(); i++) {
+            for (int j = i + 1; j < mat.size(); j++) {
+                if (couple[i].second > couple[j].second || 
+                   (couple[i].second == couple[j].second && couple[i].first > couple[j].first)) {
+                    swap(couple[i], couple[j]);
+                }
+            }
+        }
+        vector <int> ordered;
+        for (int i=0;i<k;i++)
+        {
+            ordered.push_back(couple[i].first);
+        }
+        return ordered;
+    }
+};
