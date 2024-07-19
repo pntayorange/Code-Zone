@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool isValidSudoku(vector<vector<char>>& board) {
+        bool usedRow[9][9] = {0}, usedCol[9][9] = {0}, usedGrid[9][9] = {0};
+
+        for (int i = 0; i < 9; ++i)
+        {
+            for (int j = 0; j < 9; ++j)
+            {
+                char cell = board[i][j];
+                if (cell != '.')
+                {
+                    int num = cell - '0' - 1;
+                    int k = i / 3 * 3 + j / 3;
+                    if (usedRow[i][num] || usedCol[j][num] || usedGrid[k][num])
+                        return false;
+
+                    usedRow[i][num] = usedCol[j][num] = usedGrid[k][num] = 1;
+                }
+            }
+        }
+        
+        return true;
+    }
+};
