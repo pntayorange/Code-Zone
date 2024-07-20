@@ -1,0 +1,23 @@
+class Solution {
+public:
+   
+    int minimumLength(string s) {
+        int N[26]={0};
+        for (int i=0;i<s.length();i++)
+        {
+            N[s[i]-'a']++;
+        }
+        int len=0;
+        for (int i=0;i<26;i++)
+        {
+            while (N[i]>=3) 
+            {
+                N[i]-=2;
+            }
+            len+=N[i];
+            
+        }
+        return len;
+        
+    }
+};
