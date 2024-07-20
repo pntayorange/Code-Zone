@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int findContentChildren(vector<int>& g, vector<int>& s) {
+        int n=g.size();
+        int m=s.size();
+        int l=0;//-->number of cookies
+        int r=0;//number of students
+        sort(g.begin(),g.end());
+        sort(s.begin(),s.end());
+        while(l<m && r<n){
+            if(g[r]<=s[l])r++;
+            l++;
+        }
+        return r;
+    }
+};
+//TC-O(nlogn)+O(mlogm)+O(max(m,n));
+//SC-O(1)
