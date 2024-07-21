@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<string> findWords(vector<string>& words) {
+        string row1 = "qwertyuiop";
+        string row2 = "asdfghjkl";
+        string row3 = "zxcvbnm";
+        int N[26];
+        
+        for (int i = 0; i < row1.length(); i++) 
+            N[row1[i] - 'a'] = 1;
+        for (int i = 0; i < row2.length(); i++) 
+            N[row2[i] - 'a'] = 2;
+        for (int i = 0; i < row3.length(); i++) 
+            N[row3[i] - 'a'] = 3;
+        
+        vector<string> key;
+        
+        for (int i = 0; i < words.size(); i++) {
+            bool tf = true;
+            for (int j = 1; j < words[i].size(); j++) {
+                if (N[tolower(words[i][0]) - 'a'] != N[tolower(words[i][j]) - 'a']) {
+                    tf = false;
+                    break;
+                }
+            }
+            if (tf) 
+                key.push_back(words[i]);
+        }
+        
+        return key;
+    }
+};
