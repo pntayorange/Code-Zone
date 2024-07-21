@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int findLHS(vector<int>& nums) {
+        unordered_map<int, int> freq;
+
+        for (int num : nums) {
+            freq[num]++;
+        }
+
+        int len = 0;
+
+        for (const auto& entry : freq) {
+            int num = entry.first;
+            if (freq.find(num + 1) != freq.end()) {
+                len = max(len, entry.second + freq[num + 1]);
+            }
+        }
+
+        return len;
+    }
+};
