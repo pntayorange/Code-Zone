@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int averageValue(vector<int>& nums) {
+        int num = 0;
+        int total = 0;
+        for (int i : nums) {
+            if (!(i & 1) && i % 3 == 0) {
+                num++;
+                total += i;
+            }
+        }
+        if (!num)
+            return 0;
+        return total / num;
+    }
+};
