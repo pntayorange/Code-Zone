@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<bool> prefixesDivBy5(vector<int>& nums) {
+        vector<bool> tf;
+        int bin = 0, dup = 1;
+        for (int i = 0; i < nums.size(); i++) {
+            bin = 0;
+            dup = 1;
+            for (int j = i; j >= 0; j--) {
+                bin += nums[j] * dup;
+                dup *= 2;
+                if (dup > 10)
+                    dup %= 10;
+            }
+            if (bin % 5 == 0)
+                tf.push_back(true);
+            else
+                tf.push_back(false);
+        }
+        return tf;
+    }
+};
