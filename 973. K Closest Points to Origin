@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int distance(vector<vector<int>>& points, int index) {
+        return points[index][0] * points[index][0] +
+               points[index][1] * points[index][1];
+    }
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int k) {
+        if (k == points.size())
+            return points;
+        std::ios::sync_with_stdio(false);
+        std::cin.tie(NULL);
+        std::cout.tie(NULL);
+        int p = points.size();
+        vector<int> dis(points.size());
+        for (int i = 0; i < points.size(); i++) {
+            dis[i] = distance(points, i);
+        }
+        for (int i = 0; i < p; i++) {
+            for (int j = 0; j < p; j++) {
+                if (dis[i] < dis[j]) {
+                    swap(dis[i],dis[j]);
+                    swap(points[i], points[j]);
+                }
+            }
+        }
+        vector<vector<int>> res;
+        for (int i = 0; i < k; i++) {
+            res.push_back(points[i]);
+        }
+        return res;
+    }
+};
