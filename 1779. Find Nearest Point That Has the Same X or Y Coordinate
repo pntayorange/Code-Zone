@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int nearestValidPoint(int x, int y, vector<vector<int>>& points) {
+        int mn = INT_MAX, index = 0;
+        for (int i = 0; i < points.size(); i++) {
+            if (points[i][0] == x || points[i][1] == y) {
+                int a = abs(points[i][0] - x) + abs(points[i][1] - y);
+                if (mn > a) {
+                    mn = a;
+                    index = i;
+                }
+            }
+        }
+        if (mn == INT_MAX)
+            return -1;
+        return index;
+    }
+};
