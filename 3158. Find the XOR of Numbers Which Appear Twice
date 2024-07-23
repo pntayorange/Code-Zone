@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int duplicateNumbersXOR(vector<int>& nums) {
+        vector<int> vec(51, 0);
+        for (int i = 0; i < nums.size(); i++) {
+            vec[nums[i]]++;
+        }
+        int x = 0;
+        for (int i = 0; i <= 50; i++) {
+            if (vec[i] == 2)
+                x ^= i;
+        }
+        return x;
+    }
+};
