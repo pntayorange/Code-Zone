@@ -1,0 +1,12 @@
+class Solution {
+public:
+    char repeatedCharacter(string s) {
+        int N[26] = {0};
+        for (char i : s) {
+            N[i - 'a']++;
+            if (N[i - 'a'] == 2)
+                return i;
+        }
+        return 'a';
+    }
+};
