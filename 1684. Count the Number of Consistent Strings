@@ -1,0 +1,30 @@
+class Solution {
+public:
+    Solution() {
+
+        ios_base::sync_with_stdio(0);
+        cin.tie(0);
+        cout.tie(0);
+    }
+    int countConsistentStrings(string allowed, vector<string>& words) {
+        int N[26] = {0};
+        for (char c : allowed) {
+            N[c - 'a'] = 1;
+        }
+        int count = 0;
+        for (int i = 0; i < words.size(); i++) {
+            bool tf = true;
+            {
+                for (int j = 0; j < words[i].size(); j++) {
+                    if (N[words[i][j] - 'a'] == 0) {
+                        tf = false;
+                        break;
+                    }
+                }
+            }
+            if (tf)
+                count++;
+        }
+        return count;
+    }
+};
