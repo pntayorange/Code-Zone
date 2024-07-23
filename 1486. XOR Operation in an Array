@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int xorOperation(int n, int start) {
+        vector<int> arr(n);
+        int oper = start;
+        for (int i = 1; i < n; i++) {
+            arr[i] = start + 2 * i;
+            oper ^= arr[i];
+        }
+        return oper;
+    }
+};
