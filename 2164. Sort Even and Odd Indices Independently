@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<int> sortEvenOdd(vector<int>& nums) {
+        vector<int> odd;
+        vector<int> eve;
+        int n = nums.size();
+        for (int i = 0; i < n; i++) {
+            if (!(i & 1))
+                eve.push_back(nums[i]);
+            else
+                odd.push_back(nums[i]);
+        }
+        sort(eve.begin(), eve.end());
+        sort(odd.begin(), odd.end(),
+             [](const int& a, const int& b) { return a > b; });
+        nums.clear();
+        int index = 0, jndex = 0;
+        for (int i = 0; i < n; i++)
+            if (!(i & 1)) {
+                nums.push_back(eve[index]);
+                index++;
+            } else {
+                nums.push_back(odd[jndex]);
+                jndex++;
+            }
+        // for (int i : eve)
+        //     cout << i << " ";
+        // cout << endl;
+        // for (int i : odd)
+        //     cout << i << " ";
+        return nums;
+    }
+};
