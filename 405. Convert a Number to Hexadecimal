@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string toHex(int num) {
+        if (num == 0)
+            return "0";
+        string bits = bitset<32>(num).to_string();
+        bits = bits.substr(bits.find('1'));
+        int len = bits.length();
+        if (len % 4 != 0) {
+            int padding = 4 - (len % 4);
+            bits.insert(0, padding, '0');
+        }
+
+        stringstream hexs;
+        for (int i = 0; i < bits.length(); i += 4) {
+            bitset<4> fourBits(bits.substr(i, 4));
+            hexs << hex << fourBits.to_ulong();
+        }
+        return hexs.str();
+    }
+};
