@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int addedInteger(vector<int>& nums1, vector<int>& nums2) {
+        int mx1 = nums1[0];
+        int mx2 = nums2[0];
+        for (int i : nums1)
+            mx1 = max(mx1, i);
+        for (int i : nums2)
+            mx2 = max(mx2, i);
+        return mx2 - mx1;
+    }
+};
