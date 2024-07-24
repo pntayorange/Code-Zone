@@ -1,0 +1,17 @@
+class Solution {
+public:
+    vector<int> evenOddBit(int n) {
+        int indice = 0;
+        int even = 0, odd = 0;
+        while (n) {
+            int a = n & 1;
+            if (indice & 1) {
+                odd += a;
+            } else
+                even += a;
+            n = n >> 1;
+            indice++;
+        }
+        return {even, odd};
+    }
+};
