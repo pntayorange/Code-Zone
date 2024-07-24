@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int similarPairs(vector<string>& words) {
+        int pair = 0;
+        for (int i = 0; i < words.size(); i++) {
+            vector<bool> character(26, false);
+            for (int j = 0; j < words[i].size(); j++) {
+                character[words[i][j] - 'a'] = true;
+            }
+            for (int j = i + 1; j < words.size(); j++) {
+                bool tf = true;
+                vector<bool> character2(26, false);
+                for (int k = 0; k < words[j].size(); k++) {
+                    character2[words[j][k] - 'a'] = true;
+                }
+                if (character == character2)
+                    pair++;
+            }
+        }
+        return pair;
+    }
+};
