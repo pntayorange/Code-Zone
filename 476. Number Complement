@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int findComplement(int n) {
+        if (n == 0)
+            return 1;
+        int com = 0;
+        long long dup = 1;
+        while (n) {
+            int a = n & 1;
+            com += ((a == 1) ? 0 : 1) * dup;
+            n = n >> 1;
+            dup *= 2;
+        }
+        return com;
+    }
+};
