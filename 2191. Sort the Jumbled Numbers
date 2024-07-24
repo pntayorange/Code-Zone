@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> sortJumbled(vector<int>& mapping, vector<int>& nums) {
+        unordered_map<int, int> mp;
+        for (int i : nums) {
+            int temp = i;
+            int change = 0;
+            int base10 = 0;
+            if (temp == 0) {
+                mp[i] = mapping[0];
+                continue;
+            }
+            while (temp) {
+                change = change + mapping[temp % 10] * pow(10, base10);
+                base10++;
+                temp /= 10;
+            }
+            mp[i] = change;
+        }
+        auto cmp = [&mp](int a, int b) { return mp[a] < mp[b]; };
+        stable_sort(nums.begin(), nums.end(), cmp);
+        return nums;
+    }
+};
