@@ -1,0 +1,23 @@
+class Solution {
+public:
+    Solution ()
+    {
+        ios::sync_with_stdio(false);
+        cin.tie(0);
+        cout.tie(0);
+    }
+    int countPrimeSetBits(int left, int right) {
+        int prime_count = 0;
+        for (int i = left; i <= right; i++) {
+            int temp = i, bit = 0;
+            while (temp) {
+                bit += temp & 1;
+                temp >>= 1;
+            }
+            if (bit == 2 || bit == 3 || bit == 5 || bit == 7 || bit == 11 ||
+                bit == 13 || bit == 17 || bit == 19)
+                prime_count++;
+        }
+        return prime_count;
+    }
+};
