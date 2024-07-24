@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int binaryGap(int n) {
+        int index = 0, len = 0, o;
+        bool tf = false;
+        vector<int> bits(32, 0);
+        while (n) {
+            if (n & 1 && !tf)
+                o = index;
+            bits[index] = n & 1;
+            index++;
+            n >>= 1;
+        }
+        for (int i = 0; i < 32; i++) {
+            if (bits[i] == 1) {
+                len = max(len, i - o);
+                o = i;
+            }
+        }
+        return len;
+    }
+};
