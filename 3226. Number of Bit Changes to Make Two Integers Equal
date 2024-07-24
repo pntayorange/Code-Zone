@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minChanges(int n, int k) {
+        int changes = 0;
+        while (n != k) {
+            int a = n & 1;
+            int b = k & 1;
+            if (a == 0 && b == 1)
+                return -1;
+            changes += (a != b);
+            n = n >> 1;
+            k = k >> 1;
+        }
+        return changes;
+    }
+};
