@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int minimumMoves(string s) {
+        int con = 0;
+        int move = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] == 'X' && con <= 0) {
+                con = 3;
+                move++;
+            }
+            con--;
+        }
+        return move;
+    }
+};
