@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int mostFrequentEven(vector<int>& nums) {
+        int even = -1, mx = 0;
+        unordered_map<int, int> freq;
+        for (int i : nums) {
+            freq[i]++;
+            if (i % 2 == 0) {
+                if (mx < freq[i]) {
+                    mx = freq[i];
+                    even = i;
+                } else if (mx == freq[i] && even > i) {
+                    even = i;
+                }
+            }
+        }
+        return even;
+    }
+};
