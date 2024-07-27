@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool check(vector<vector<char>>& grid, int ic, int jc) {
+        int black = 0;
+        for (int i = ic - 1; i <= ic; i++) {
+            for (int j = jc - 1; j <= jc; j++) {
+                if (grid[i][j] == 'B') {
+                    black++;
+                }
+            }
+        }
+        return black!=2;
+    }
+    bool canMakeSquare(vector<vector<char>>& grid) {
+        for (int i = 1; i < grid.size(); i++) {
+            for (int j = 1; j < grid[0].size(); j++) {
+                if (check(grid, i, j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
