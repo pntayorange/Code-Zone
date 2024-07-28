@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int countQuadruplets(vector<int>& nums) {
+        int n = nums.size();
+        int res = 0;
+        int count[201] = { 0 };
+        
+        for (int b = n - 3; b > 0; --b) {
+            for (int d = b + 2; d < n; ++d) {
+                int diff = nums[d] - nums[b + 1];
+                
+                if (diff > 0) 
+                    ++count[diff];
+            }
+            
+            for (int a = 0; a < b; ++a)
+                res += count[nums[a] + nums[b]];
+        }
+        
+        return res;
+    }
+};
