@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string greatestLetter(string s) {
+        int U[26] = {0};
+        int L[26] = {0};
+        char ch;
+        for (int i = 0; i < s.length(); i++) {
+
+            if (s[i] <= 95)
+                U[s[i] - 'A']++;
+            else
+                L[s[i] - 'a']++;
+        }
+        for (int i = 25; i >= 0; i--) {
+            if (U[i] != 0 && L[i] != 0) {
+                return string(1, (char)(i + 'A'));
+            }
+        }
+        return "";
+    }
+};
