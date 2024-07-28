@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minNumber(vector<int>& nums1, vector<int>& nums2) {
+        int N[10] = {0};
+        int mn1 = 10, mn2 = 10;
+        for (int i : nums1) {
+            N[i]++;
+            mn1 = min(mn1, i);
+        }
+
+        for (int i : nums2) {
+            N[i]++;
+            mn2 = min(mn2, i);
+        }
+        int mn = 0;
+        for (int i = 1; i <= 9; i++)
+            if (N[i] == 2)
+                return i;
+        return min(mn2 * 10 + mn1, mn1 * 10 + mn2);
+    }
+};
