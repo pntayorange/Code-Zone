@@ -1,0 +1,43 @@
+class Solution {
+public:
+    int maxHeightOfTriangle(int red, int blue) {
+        int height = 0;
+        int balls = 1;
+        int tblue = blue, tred = red;
+        while (true) {
+            if (balls % 2 == 1) {
+                tblue -= balls;
+                if (tblue < 0)
+                    break;
+            } else {
+                tred -= balls;
+                if (tred < 0)
+                    break;
+            }
+            height++;
+            balls++;
+        }
+
+        int mx = height;
+        height = 0;
+        tblue = blue, tred = red;
+        balls = 1;
+        while (true) {
+            if (balls % 2 == 1) {
+                tred -= balls;
+                if (tred < 0)
+                    break;
+
+            } else {
+
+                tblue -= balls;
+                if (tblue < 0)
+                    break;
+            }
+            height++;
+            balls++;
+        }
+
+        return max(mx, height);
+    }
+};
