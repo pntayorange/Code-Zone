@@ -13,10 +13,10 @@ public:
                     if (temp >= c)
                         temp %= c;
                     sum += code[temp];
-                    cout << code[temp] << " ";
+                    //cout << code[temp] << " ";
                 }
                 res[i] = sum;
-                cout << endl;
+                //cout << endl;
             }
         if (k < 0)
             for (int i = 0; i < c; i++) {
@@ -26,10 +26,10 @@ public:
                     if (temp < 0)
                         temp += c;
                     sum += code[temp];
-                    cout << temp << " ";
+                    //cout << temp << " ";
                 }
                 res[i] = sum;
-                cout << endl;
+                //cout << endl;
             }
         return res;
         ;
