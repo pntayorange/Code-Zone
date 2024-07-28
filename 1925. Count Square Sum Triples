@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int countTriples(int n) {
+        int trip = 0;
+        for (int i = 1; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                double dou = sqrt(i * i + j * j);
+                if (i * i + j * j == dou * dou && dou == (int)dou && dou <= n)
+                    trip++;
+            }
+        }
+        return trip * 2;
+    }
+};
