@@ -1,0 +1,37 @@
+class Solution {
+public:
+    vector<int> decrypt(vector<int>& code, int k) {
+        int c = code.size();
+        vector<int> res(code.size(), 0);
+        if (k == 0)
+            return res;
+        if (k > 0)
+            for (int i = 0; i < c; i++) {
+                int sum = 0;
+                for (int j = 0; j < k; j++) {
+                    int temp = i + j + 1;
+                    if (temp >= c)
+                        temp %= c;
+                    sum += code[temp];
+                    cout << code[temp] << " ";
+                }
+                res[i] = sum;
+                cout << endl;
+            }
+        if (k < 0)
+            for (int i = 0; i < c; i++) {
+                int sum = 0;
+                for (int j = 0; j < -k; j++) {
+                    int temp = i - j - 1;
+                    if (temp < 0)
+                        temp += c;
+                    sum += code[temp];
+                    cout << temp << " ";
+                }
+                res[i] = sum;
+                cout << endl;
+            }
+        return res;
+        ;
+    }
+};
