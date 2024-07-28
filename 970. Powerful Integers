@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> powerfulIntegers(int x, int y, int bound) {
+        unordered_map<int, int> mp;
+        for (int i = 0; i <= 19; i++) {
+            if (pow(x, i) > bound)
+                break;
+            for (int j = 0; j <= 19; j++) {
+                if (pow(y, j) > bound)
+                    break;
+                int p = pow(x, i) + pow(y, j);
+                if (bound >= p)
+                    mp[p]++;
+            }
+        }
+        vector<int> res;
+        for (auto i : mp) {
+            if (i.second != 0)
+                res.push_back(i.first);
+        }
+        return res;
+    }
+};
