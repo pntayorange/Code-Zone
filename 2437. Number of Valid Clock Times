@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int countTime(string time) {
+        int hour = 1, minu = 1;
+
+        if (time[0] == '?' && time[1] == '?') {
+            hour = 24;
+        } else {
+            if (time[0] == '?') {
+                if (time[1] >= '4')
+                    hour = 2;
+                if (time[1] < '4')
+                    hour = 3;
+            }
+            if (time[1] == '?') {
+                if (time[0] == '2') {
+                    hour = 4;
+                } else
+                    hour = 10;
+            }
+        }
+
+        if (time[3] == '?' && time[4] == '?') {
+            minu = 60;
+        } else {
+            if (time[3] == '?')
+                minu = 6;
+            if (time[4] == '?')
+                minu = 10;
+        }
+
+        return hour * minu;
+    }
+};
+
+/*
+
+*/
