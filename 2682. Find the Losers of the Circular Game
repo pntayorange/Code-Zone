@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> circularGameLosers(int n, int k) {
+        int Ball[n];
+        for (int i = 0; i < n; i++)
+            Ball[i] = 0;
+        int index = 0, step = k;
+        while (Ball[index] != 1) {
+            Ball[index]++;
+            //cout << index + 1 << endl;
+            index += step;
+            step += k;
+            if (index >= n)
+                index %= n;
+        }
+        vector<int> res;
+        for (int i = 0; i < n; i++) {
+            if (Ball[i] == 0)
+                res.push_back(i + 1);
+        }
+        return res;
+    }
+};
