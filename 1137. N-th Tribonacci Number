@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int tribonacci(int n) {
+        int T[38];
+        T[0] = 0, T[1] = 1, T[2] = 1;
+        for (int i = 0; i <= n - 3; i++) {
+            T[i + 3] = T[i] + T[i + 1] + T[i + 2];
+        }
+        return T[n];
+    }
+};
