@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string clearDigits(string s) {
+        int det = 0;
+        string str;
+        //cout << (char)57 << endl;
+        for (int i = s.length() - 1; i >= 0; i--) {
+
+            if (s[i] <= 57)
+                det++;
+            else if (det > 0) {
+                det--;
+                continue;
+            }
+            if (det == 0) {
+                str.insert(str.begin(), s[i]);
+            }
+        }
+        return str;
+    }
+};
