@@ -1,0 +1,38 @@
+class Solution {
+public:
+    string toGoatLatin(string sentence) {
+        sentence += ' ';
+        string add = "a";
+        vector<string> words;
+        string word;
+
+        for (int i = 0; i < sentence.length(); i++) {
+            if (sentence[i] == ' ') {
+                words.push_back(word);
+                word = "";
+                continue;
+            }
+            word += sentence[i];
+        }
+
+        string change;
+        for (int i = 0; i < words.size(); i++) {
+            if (words[i][0] == 'a' || words[i][0] == 'e' || words[i][0] == 'i' ||
+                words[i][0] == 'o' || words[i][0] == 'u' ||
+                words[i][0] == 'A' || words[i][0] == 'E' || words[i][0] == 'I' ||
+                words[i][0] == 'O' || words[i][0] == 'U') {
+                change += words[i] + "ma" + add;
+            } else {
+                for (int j = 1; j < words[i].length(); j++) {
+                    change += words[i][j];
+                }
+                change += words[i][0];
+                change += "ma" + add;
+            }
+            add += 'a';
+            if (i != words.size() - 1) change += ' ';
+        }
+
+        return change;
+    }
+};
