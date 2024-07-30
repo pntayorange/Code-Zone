@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int numberOfChild(int n, int k) {
+        int move=-1;
+        int childhold=0;
+        while (k>0)
+        {
+            if (childhold==0||childhold==n-1) move*=-1;
+            childhold+=move;
+            k--;
+        }
+        return childhold;
+    }
+};
