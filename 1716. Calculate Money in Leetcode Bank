@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int totalMoney(int n) {
+        int money = 0;
+        int week = 0;
+        int day = week + 1;
+        int day_th = 0;
+        while (week * 7 + day_th < n) {
+            //cout << day << " ";
+            money += day;
+            day++;
+            day_th++;
+            if (day_th == 7) {
+                week++;
+                day_th = 0;
+                day = week + 1;
+                //cout << endl;
+            }
+        }
+        return money;
+    }
+};
