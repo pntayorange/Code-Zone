@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int getKth(int lo, int hi, int k) {
+        vector<pair<int, int>> order;
+        for (int i = lo; i <= hi; i++) {
+            int temp = i;
+            int step = 0;
+            while (temp != 1) {
+                if (temp & 1)
+                    temp = temp * 3 + 1;
+                else
+                    temp /= 2;
+                step++;
+            }
+            order.push_back({i, step});
+        }
+        sort(order.begin(), order.end(),
+             [](const pair<int, int>& a, const pair<int, int>& b) {
+                 if (a.second == b.second)
+                     return a.first < b.first;
+                 return a.second < b.second;
+             });
+        // for (const auto& p : order) {
+        //     cout << "(" << p.first << ", " << p.second << ") ";
+        //     cout << endl;
+        // }
+        // cout <<order[k - 1].second<<" ";
+        return order[k - 1].first;
+    }
+};
