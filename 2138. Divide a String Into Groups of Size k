@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<string> divideString(string s, int k, char fill) {
+        vector<string> str;
+        string cur;
+        for (int i = 0; i < s.length(); i++) {
+            cur += s[i];
+            if (cur.length() == k) {
+                str.push_back(cur);
+                cur = "";
+            }
+        }
+        //cout <<cur<<cur.length()<<endl;
+        if (cur.length() != 0) {
+                for (int i = cur.length(); i <k; i++)
+                    cur += fill;
+            str.push_back(cur);
+        }
+        return str;
+    }
+};
