@@ -1,0 +1,36 @@
+class Solution {
+public:
+    long long findScore(vector<int>& nums) {
+        vector<pair<long, long>> arr;
+        for (int i = 0; i < nums.size(); i++) {
+            arr.push_back({nums[i], i});
+        }
+        sort(arr.begin(), arr.end(),
+             [](const pair<int, int>& a, const pair<int, int>& b) {
+                 if (a.first == b.first)
+                     return a.second <
+                            b.second; // Add this line to pass 1041-1044
+                 return a.first < b.first;
+             });
+        vector<bool> check(nums.size(), false);
+        long long score = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            int c = arr[i].second;
+            if (!check[c]) {
+                if (c >= 1 && c <= nums.size() - 1) {
+                    check[c - 1] = true;
+                    check[c] = true;
+                    check[c + 1] = true;
+                } else if (c == 0) {
+                    check[c] = true;
+                    check[c + 1] = true;
+                } else {
+                    check[c] = true;
+                    check[c - 1] = true;
+                }
+                score += nums[c];
+            }
+        }
+        return score;
+    }
+};
