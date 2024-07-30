@@ -1,0 +1,16 @@
+class Solution {
+public:
+    bool checkString(string s) {
+        vector<int> ampha;
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] == 'a')
+                ampha.push_back(i);
+        }
+        if (!ampha.empty() && ampha[0] != 0)
+            return false;
+        for (int i = 1; i < ampha.size(); i++)
+            if (ampha[i] - ampha[i - 1] != 1)
+                return false;
+        return true;
+    }
+};
