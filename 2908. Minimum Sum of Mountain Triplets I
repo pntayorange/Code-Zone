@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int minimumSum(vector<int>& nums) {
+
+        int mnsum = 1000;
+        for (int i = 1; i < nums.size() - 1; i++) {
+            int mn_left = nums[i], mn_right = nums[i], mnl = i, mnr = i;
+            for (int j = 0; j < i; j++) {
+                if (mn_left > nums[j]) {
+                    mn_left = nums[j];
+                    mnl = j;
+                }
+            }
+            for (int j = i + 1; j < nums.size(); j++) {
+                if (mn_right > nums[j]) {
+                    mn_right = nums[j];
+                    mnr = j;
+                }
+            }
+            if ((mnl == i) || (mnr == i))
+                continue;
+            mnsum = min(mnsum, mn_left + mn_right + nums[i]);
+        }
+        if (mnsum == 1000)
+            return -1;
+        return mnsum;
+    }
+};
