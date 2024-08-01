@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int countAsterisks(string s) {
+        bool bar = false;
+        int asterisks = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] == '|')
+                bar = !bar;
+            if (bar == false)
+                if (s[i] == '*')
+                    asterisks++;
+        }
+        return asterisks;
+    }
+};
