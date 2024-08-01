@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int countKeyChanges(string s) {
+        int chane = 0;
+        for (int i = 1; i < s.length(); i++) {
+            if (toupper(s[i - 1]) != toupper(s[i]))
+                chane++;
+        }
+        return chane;
+    }
+};
