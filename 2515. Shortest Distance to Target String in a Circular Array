@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int closetTarget(vector<string>& words, string target, int startIndex) {
+        bool tf = false;
+        for (int i = 0; i < words.size(); i++) {
+            if (words[i] == target) {
+                tf = true;
+                break;
+            }
+        }
+        if (!tf)
+            return -1;
+        int dis = 100;
+        for (int i = 0; i <= words.size() / 2; i++) {
+            int direc = (startIndex + i) % words.size();
+            int counter = (startIndex - i + words.size()) % words.size();
+            
+            if (target == words[direc]) {
+                dis = min(dis, i);
+            }
+            if (target == words[counter]) {
+                dis = min(dis, i);
+            }
+        }
+        cout << ("abc" == "abc") << endl;
+        cout << ("abc" == "acb") << endl;
+        cout << ("abc" == "bbb") << endl;
+        return dis;
+    }
+};
