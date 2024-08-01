@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int numOfStrings(vector<string>& patterns, string word) {
+        int sub = 0;
+        for (int i = 0; i < patterns.size(); i++) {
+            for (int j = 0; j < word.size(); j++) {
+                bool tf = false;
+                if (patterns[i][0] == word[j]) {
+                    for (int k = 0; k < patterns[i].length(); k++) {
+                        if (patterns[i][k] == word[j + k])
+                            tf = true;
+                        else {
+                            tf = false;
+                            break;
+                        }
+                    }
+                }
+                if (tf) {
+                    sub++;
+                    break;
+                }
+            }
+        }
+        return sub;
+    }
+};
