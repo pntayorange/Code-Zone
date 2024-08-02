@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool detectCapitalUse(string word) {
+        if (word[0] >= 'a')
+            for (char c : word)
+                if (c < 'a')
+                    return false;
+        bool tf = true;
+        for (char c : word)
+            if (c >= 'a')
+                tf = false;
+        if (tf)
+            return true;
+        tf = true;
+        for (int i = 1; i < word.length(); i++)
+            if (word[i] < 'a')
+                return false;
+        return true;
+    }
+};
