@@ -1,0 +1,46 @@
+class Solution {
+public:
+    string reformatDate(string date) {
+        vector<string> months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+        string yy, mm, dd;
+        string cur;
+        date += ' ';
+        int space = 0;
+        for (char c : date) {
+            if (c == ' ') {
+                if (space == 0) {
+                    dd = cur;
+                    space++;
+                } else if (space == 1) {
+                    mm = cur;
+                    space++;
+                } else
+                    yy = cur;
+                cur = "";
+                continue;
+            }
+            cur += c;
+        }
+        dd.pop_back();
+        dd.pop_back();
+        if (dd.length() == 1)
+            dd.insert(0, "0");
+        for (int i = 0; i < months.size(); i++) {
+            if (mm == months[i]) {
+                if (i <= 8) {
+                    mm = "0";
+                    mm += to_string(i + 1);
+                } else {
+                    mm = to_string(i + 1);
+                }
+                break;
+            }
+        }
+        string time;
+        time += yy + "-";
+        time += mm + "-";
+        time += dd;
+        return time;
+    }
+};
