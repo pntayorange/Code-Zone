@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maximumValue(vector<string>& strs) {
+        int mlen = 0;
+        for (string s : strs) {
+            bool IsNum = true;
+            int numberic = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (IsNum && isdigit(s[i])) {
+                    numberic = numberic * 10 + (int)(s[i] - '0');
+                } else {
+                    IsNum = false;
+                    break;
+                }
+            }
+            if (IsNum)
+                mlen = max(mlen, numberic);
+            else
+                mlen = max(mlen, (int)s.length());
+        }
+        return mlen;
+    }
+};
