@@ -1,0 +1,37 @@
+class Solution {
+public:
+    bool wordPattern(string pattern, string s) {
+        string temp = s;
+        temp += ' ';
+        unordered_map<char, string> pat;
+        string word;
+        vector<string> words;
+        int index = 0;
+        for (int i = 0; i < temp.length(); i++) {
+            if (temp[i] == ' ') {
+                pat[pattern[index++]] = word;
+                words.push_back(word);
+                word = "";
+
+                continue;
+            }
+            word += s[i];
+        }
+        
+        string check;
+        for (char c : pattern) {
+            check += pat[c] + " ";
+        }
+
+        string fake;
+        for (string i : words) {
+            for (auto c : pat)
+                if (c.second == i) {
+                    fake += c.first;
+                    break;
+                }
+        }
+        check.pop_back();
+        return check == s && fake == pattern;
+    }
+};
