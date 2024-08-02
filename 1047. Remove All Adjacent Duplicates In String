@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        stack<char> ch;
+        char prev = '\0';
+        for (char c : s) {
+            ch.push(c);
+            if (!ch.empty() && prev == c) {
+                ch.pop();
+                ch.pop();
+                prev = ch.empty() ? '\0' : ch.top();
+            } else {
+                prev = c;
+            }
+        }
+
+        string str;
+        while (!ch.empty()) {
+            str += ch.top();
+            ch.pop();
+        }
+        reverse(str.begin(), str.end());
+        return str;
+    }
+};
