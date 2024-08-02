@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string reformatNumber(string number) {
+        string dig;
+        for (char c : number)
+            if (isdigit(c))
+                dig += c;
+        string format;
+        for (int i = 0; i < dig.length(); i++) {
+            format += dig[i];
+            if ((i + 1) % 3 == 0)
+                format += '-';
+        }
+        cout << format << endl;
+        int d = dig.length(), f = format.length();
+        if (d % 3 == 1) {
+            format[f - 3] = '-';
+            format[f - 2] = dig[d - 2];
+            format += dig[d - 1];
+        } else if (d % 3 == 2) {
+            format += dig[d - 2] + dig[d - 1];
+        }
+        format.pop_back();
+        // cout << format << endl;
+        return format;
+    }
+};
