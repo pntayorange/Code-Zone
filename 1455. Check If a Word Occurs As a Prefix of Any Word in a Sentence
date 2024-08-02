@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int isPrefixOfWord(string sentence, string searchWord) {
+        sentence += ' ';
+        int spaces = 0;
+        string cur;
+        for (int i = 0; i < sentence.length(); i++) {
+            if (sentence[i] == ' ') {
+                spaces++;
+                bool tf = false;
+                if (cur[0] == searchWord[0])
+                    for (int j = 0; j < searchWord.length(); j++) {
+                        if (cur[j] == searchWord[j])
+                            tf = true;
+                        else {
+                            tf = false;
+                            break;
+                        }
+                    }
+                if (tf)
+                    return spaces;
+                cur = "";
+                continue;
+            }
+            cur += sentence[i];
+        }
+        return -1;
+    }
+};
