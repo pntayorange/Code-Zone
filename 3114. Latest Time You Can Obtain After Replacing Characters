@@ -1,0 +1,52 @@
+class Solution {
+public:
+    string findLatestTime(string s) {
+        if (s[0] == '?' && s[1] == '?' && s[2] == '?' && s[3] == '?')
+            return "11:59";
+        string Hour, Minus;
+        if (s[0] == '?' && s[1] == '?') {
+            Hour += "11";
+        } else {
+            if (s[0] != '?' && s[1] != '?') {
+                Hour += s[0];
+                Hour += s[1];
+            }
+            if (s[0] == '?') {
+                if (s[1] <= '1') {
+                    Hour += '1';
+                    Hour += s[1];
+                } else {
+                    Hour += '0';
+                    Hour += s[1];
+                }
+            }
+            if (s[1] == '?') {
+                if (s[0] == '0') {
+                    Hour += s[0];
+                    Hour += '9';
+                } else {
+                    Hour += s[0];
+                    Hour += '1';
+                }
+            }
+        }
+
+        if (s[3] == '?' && s[4] == '?')
+            Minus += "59";
+        else {
+            if (s[3] != '?' && s[4] != '?') {
+                Minus += s[3];
+                Minus += s[4];
+            }
+            if (s[3] == '?') {
+                Minus += '5';
+                Minus += s[4];
+            }
+            if (s[4] == '?') {
+                Minus += s[3];
+                Minus += '9';
+            }
+        }
+        return Hour + ":" + Minus;
+    }
+};
