@@ -1,0 +1,24 @@
+class Solution {
+public:
+    string capitalizeTitle(string title) {
+        title += ' ';
+        vector<string> words;
+        string cur;
+        for (int i = 0; i < title.length(); i++) {
+            if (title[i] == ' ') {
+                words.push_back((cur));
+                cur = "";
+                continue;
+            }
+            cur += tolower(title[i]);
+        }
+        string str;
+        for (int i = 0; i < words.size(); i++) {
+            if (words[i].length() >= 3)
+                words[i][0] = toupper(words[i][0]);
+            str += words[i] + " ";
+        }
+        str.pop_back();
+        return str;
+    }
+};
