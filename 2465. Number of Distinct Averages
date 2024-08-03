@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int distinctAverages(vector<int>& nums) {
+        unordered_map<double, bool> dis;
+        sort(nums.begin(), nums.end());
+        for (int i = 0; i < nums.size() / 2; i++) {
+            dis[(double)(nums[i] + nums[nums.size() - 1 - i]) / 2.0] = true;
+        }
+        int uni = 0;
+        for (auto i : dis) {
+            if (i.second != 0)
+                uni++;
+        }
+        return uni;
+    }
+};
