@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string sortString(string s) {
+        vector<int> N(26, 0);
+        for (int i = 0; i < s.length(); i++) {
+            N[s[i] - 'a']++;
+        }
+        string res;
+        bool tf = false;
+        while (!tf) {
+            for (int i = 0; i < 26; i++)
+                if (N[i] >= 1) {
+                    res += char(i + 'a');
+                    N[i]--;
+                }
+            for (int i = 25; i >= 0; i--)
+                if (N[i] >= 1) {
+                    res += char(i + 'a');
+                    N[i]--;
+                }
+            tf = true;
+            for (int i = 0; i < 26; i++)
+                if (N[i] != 0)
+                    tf = false;
+        }
+        return res;
+    }
+};
