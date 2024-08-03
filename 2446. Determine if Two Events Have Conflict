@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int t2m(const string& time) {
+        int hours = stoi(time.substr(0, 2));
+        int minutes = stoi(time.substr(3, 2));
+        return hours * 60 + minutes;
+    }
+    bool haveConflict(vector<string>& event1, vector<string>& event2) {
+        int timest1, timeel1, timest2, timeel2;
+        timest1 = t2m(event1[0]);
+        timeel1 = t2m(event1[1]);
+        timest2 = t2m(event2[0]);
+        timeel2 = t2m(event2[1]);
+        return (timeel1 >= timest2 && timest1 <= timeel2) ||
+               (timeel2 >= timest1 && timest2 <= timeel1);
+    }
+};
