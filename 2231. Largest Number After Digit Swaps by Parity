@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int largestInteger(int num) {
+        vector<int> digits;
+        while (num > 0) {
+            digits.push_back(num % 10);
+            num /= 10;
+        }
+
+        vector<int> evens, odds;
+        for (int d : digits) {
+            if (d % 2 == 0)
+                evens.push_back(d);
+            else
+                odds.push_back(d);
+        }
+        reverse(digits.begin(), digits.end());
+        sort(evens.begin(), evens.end(), [](int a, int b) { return a > b; });
+        sort(odds.begin(), odds.end(), [](int a, int b) { return a > b; });
+        int result = 0, e = 0, o = 0;
+        for (int d : digits) {
+            if (d % 2 == 0) {
+                result = result * 10 + evens[e++];
+
+            } else {
+                result = result * 10 + odds[o++];
+            }
+        }
+
+        return result;
+    }
+};
