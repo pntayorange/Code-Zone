@@ -1,0 +1,32 @@
+class Solution {
+public:
+    string reformat(string s) {
+        vector<char> num;
+        vector<char> cha;
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] >= 'a')
+                cha.push_back(s[i]);
+            else
+                num.push_back(s[i]);
+        }
+        if (abs(static_cast<int>(cha.size()) - static_cast<int>(num.size())) >
+            1)
+            return "";
+        string str;
+        if (cha.size() >= num.size()) {
+            for (int i = 0; i < cha.size(); i++) {
+                str += cha[i];
+                if (i != num.size())
+                    str += num[i];
+            }
+        } else {
+            for (int i = 0; i < num.size(); i++) {
+                str += num[i];
+                if (i != cha.size())
+                    str += cha[i];
+            }
+        }
+
+        return str;
+    }
+};
