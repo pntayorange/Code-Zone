@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool digitCount(string num) {
+        int N[10] = {0};
+        for (int i = 0; i < num.length(); i++) {
+            N[num[i] - '0']++;
+        }
+        for (int i = 0; i < num.length(); i++) {
+            cout << i << num[i] << endl;
+            if (N[i] != (int)(num[i] - '0'))
+                return false;
+        }
+        return true;
+    }
+};
