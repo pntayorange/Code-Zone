@@ -1,0 +1,18 @@
+class Solution {
+public:
+    bool checkDistances(string s, vector<int>& distance) {
+        int left = 0, right = left + 1;
+        while (left < s.length()) {
+            if (s[left] == s[right]) {
+                if (distance[s[left] - 'a'] != right - left - 1)
+                    return false;
+            }
+            right++;
+            if (right >= s.length()) {
+                left++;
+                right = left + 1;
+            }
+        }
+        return true;
+    }
+};
