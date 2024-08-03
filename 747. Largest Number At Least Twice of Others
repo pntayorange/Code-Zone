@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int dominantIndex(vector<int>& nums) {
+        int mx=0,i_mx=0;
+        for (int i=0;i<nums.size();i++)
+        {
+           if (nums[i]>mx) {
+            mx=nums[i];
+            i_mx=i;
+           }
+        }
+        bool tf=true;
+        for (int i=0;i<nums.size();i++)
+        {
+                if (nums[i]==mx || nums[i]*2<=mx ) continue;
+                else {tf=false; break;}
+        }
+        if (tf) return i_mx;
+        return -1;
+    }
+};
