@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int minimumRecolors(string blocks, int k) {
+        int oper = INT_MAX;
+        string black;
+        for (int i = 0; i < k; i++)
+            black += 'B';
+        for (int i = 0; i < blocks.length() - k + 1; i++) {
+            int diff = 0;
+            bool tf = false;
+            for (int j = 0; j < k; j++) {
+                if (blocks[i + j] != black[j]) {
+                    diff++;
+                }
+                tf = true;
+            }
+            if (tf)
+                oper = min(oper, diff);
+        }
+        return oper;
+    }
+};
