@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int rearrangeCharacters(string s, string target) {
+        int strs[26] = {0};
+        int strt[26] = {0};
+        for (char c : s)
+            strs[c - 'a']++;
+        for (char c : target)
+            strt[c - 'a']++;
+        int copies = INT_MAX;
+        for (int i = 0; i < 26; i++) {
+            if (strt[i] != 0) {
+                copies = min(copies, strs[i] / strt[i]);
+            }
+        }
+        return copies;
+    }
+};
