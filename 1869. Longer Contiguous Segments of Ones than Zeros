@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool checkZeroOnes(string s) {
+        int lcs1 = 1, lcs0 = 1;
+        int con1 = 1, con0 = 1;
+        for (char c : s) {
+            if (c == '1') {
+                con1++;
+                con0 = 1;
+                lcs1 = max(lcs1, con1);
+            } else {
+                con0++;
+                con1 = 1;
+                lcs0 = max(lcs0, con0);
+            }
+        }
+        return lcs1 > lcs0;
+    }
+};
