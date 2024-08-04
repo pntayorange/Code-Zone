@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        int N[26] = {0};
+        for (char c : text)
+            N[c - 'a']++;
+        int balloon = min(
+            min(min(N[0] / 1, N[1] / 1), min(N[11] / 2, N[14] / 2)), N[13] / 1);
+        return balloon;
+    }
+};
