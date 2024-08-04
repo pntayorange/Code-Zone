@@ -1,0 +1,23 @@
+class Solution {
+public:
+    string makeGood(string s) {
+        stack<char> str;
+        for (int i = 0; i < s.length(); i++) {
+            if (str.size() != 0) {
+                char c = str.top();
+                if (tolower(s[i]) == tolower(c) && s[i] != c) {
+                    str.pop();
+                    continue;
+                }
+            }
+            str.push(s[i]);
+        }
+        string res;
+        while (str.size()) {
+            res += str.top();
+            str.pop();
+        }
+        reverse(res.begin(), res.end());
+        return res;
+    }
+};
