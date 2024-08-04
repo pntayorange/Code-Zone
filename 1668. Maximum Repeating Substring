@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int maxRepeating(string sequence, string word) {
+        string words, temp;
+        while (sequence.length() > words.length()) {
+            words += word;
+            if (sequence.find(words) == string::npos)
+                break;
+            temp = words;
+        }
+        return temp.length() / word.length();
+    }
+};
