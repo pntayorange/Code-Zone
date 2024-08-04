@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool isPathCrossing(string path) {
+        map<int, map<int, bool>> pos;
+        int x = 0, y = 0;
+        pos[x][y] = true;
+        for (char c : path) {
+            if (c == 'W')
+                x--;
+            if (c == 'E')
+                x++;
+            if (c == 'S')
+                y--;
+            if (c == 'N')
+                y++;
+            if (pos[x][y] == true)
+                return true;
+            pos[x][y] = true;
+        }
+        return false;
+    }
+};
