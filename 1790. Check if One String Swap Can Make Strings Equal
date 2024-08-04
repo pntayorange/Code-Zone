@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool areAlmostEqual(string s1, string s2) {
+        if (s1 == s2)
+            return true;
+        if (s1.length() != s2.length())
+            return false;
+        int fi = -1, se = -1;
+        for (int i = 0; i < s1.length(); i++) {
+            if (s1[i] != s2[i]) {
+                if (fi == -1) {
+                    fi = i;
+                } else if (se == -1) {
+                    se = i;
+                } else
+                    return false;
+            }
+        }
+        if (fi == -1 || se == -1)
+            return false;
+        swap(s1[fi], s1[se]);
+        return s1 == s2;
+    }
+};
