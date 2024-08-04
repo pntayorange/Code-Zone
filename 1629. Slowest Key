@@ -1,0 +1,19 @@
+class Solution {
+public:
+    char slowestKey(vector<int>& Times, string Keys) {
+        char key = Keys[0];
+        int time = Times[0];
+        for (int i = 1; i < Keys.size(); i++) {
+            if (Times[i] - Times[i - 1] >= time) {
+                if (Times[i] - Times[i - 1] == time) {
+                    if (key < Keys[i])
+                        key = Keys[i];
+                    continue;
+                }
+                time = Times[i] - Times[i - 1];
+                key = Keys[i];
+            }
+        }
+        return key;
+    }
+};
