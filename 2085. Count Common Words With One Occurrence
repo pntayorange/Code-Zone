@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int countWords(vector<string>& words1, vector<string>& words2) {
+        unordered_map<string, int> word1;
+        unordered_map<string, int> word2;
+        for (string s : words1)
+            word1[s]++;
+        for (string s : words2)
+            word2[s]++;
+        int count = 0;
+        for (string s : words1)
+            if (word1[s] == 1 && word2[s] == 1)
+                count++;
+        return count;
+    }
+};
