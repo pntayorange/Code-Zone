@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int minimumPushes(string word) {
+        //Top 1 so OP
+        vector<pair<char, int>> mp;
+        int N[26] = {0};
+        for (char c : word) {
+            N[c - 'a']++;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (N[i] != 0) {
+                mp.push_back({i + 'a', N[i]});
+            }
+        }
+        sort(mp.begin(), mp.end(), [](pair<char, int> a, pair<char, int> b) {
+            return a.second > b.second;
+        });
+        int push = 1, pushs = 0;
+        for (int i = 0; i < mp.size(); i++) {
+            pushs += mp[i].second * push;
+            if (i + 1 >= push * 8) {
+                push++;
+            }
+            cout << mp[i].first << " " << mp[i].second << " " << push << endl;
+        }
+        return pushs;
+    }
+};
