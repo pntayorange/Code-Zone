@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int alternateDigitSum(int n) {
+        int sign = 1;
+        int sum = 0, len = 0;
+        while (n) {
+            sum += (n % 10) * sign;
+            sign *= -1;
+            len++;
+            n /= 10;
+        }
+        if (len % 2 == 0)
+            sum *= -1;
+        return sum;
+    }
+};
