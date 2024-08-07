@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minimumBoxes(vector<int>& apple, vector<int>& capacity) {
+        sort(capacity.begin(), capacity.end(),
+             [](int a, int b) { return a > b; });
+        int sum = 0;
+        for (int i : apple)
+            sum += i;
+        int capac = 0;
+        int ncapac = 0;
+        while (capac < sum) {
+            capac += capacity[ncapac++];
+        }
+        return ncapac;
+    }
+};
