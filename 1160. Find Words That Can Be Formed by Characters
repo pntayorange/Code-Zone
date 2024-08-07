@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int countCharacters(vector<string>& words, string chars) {
+        int N[26] = {0};
+        for (char c : chars) {
+            N[c - 'a']++;
+        }
+        int len = 0;
+        for (string s : words) {
+            int C[26] = {0};
+            for (char c : s) {
+                C[c - 'a']++;
+            }
+            bool tf = true;
+            for (int i = 0; i < 26; i++) {
+                if (N[i] < C[i])
+                    tf = false;
+            }
+            if (tf)
+                len += s.length();
+        }
+        return len;
+    }
+};
