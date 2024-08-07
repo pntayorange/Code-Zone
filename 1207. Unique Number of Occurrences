@@ -1,0 +1,15 @@
+class Solution {
+public:
+    bool uniqueOccurrences(vector<int>& arr) {
+        map<int, int> freq;
+        map<int, int> dis;
+        for (int i : arr)
+            freq[i]++;
+        for (auto i : freq)
+            dis[i.second]++;
+        for (auto i : dis)
+            if (i.second > 1)
+                return false;
+        return true;
+    }
+};
