@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int sumOfEncryptedInt(vector<int>& nums) {
+        int sum = 0;
+        for (int i : nums) {
+            int len = 0, mx = 0;
+            while (i) {
+                mx = max(mx, i % 10);
+                i /= 10;
+                len++;
+            }
+            int num = 0;
+            while (len--) {
+                num = num * 10 + mx;
+            }
+            sum += num;
+        }
+        return sum;
+    }
+};
