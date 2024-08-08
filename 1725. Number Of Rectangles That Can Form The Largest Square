@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int countGoodRectangles(vector<vector<int>>& rectangles) {
+        int maxlen = 0, number = 0;
+        for (auto i : rectangles) {
+            maxlen = max(min(i[0], i[1]), maxlen);
+        }
+        for (auto i : rectangles) {
+            if (maxlen == min(i[0], i[1]))
+                number++;
+        }
+        return number;
+    }
+};
