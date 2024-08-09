@@ -1,0 +1,27 @@
+class Solution {
+public:
+    string reverseStr(string s, int k) {
+        int initial = s.length();
+        while (s.length() % (k * 2) != 0) {
+            s += "1";
+        }
+        string str, cur;
+        for (int i = 0; i < s.length(); i++) {
+            cur += s[i];
+            if (cur.length() == k) {
+                reverse(cur.begin(), cur.end());
+                str += cur;
+                for (int j = 1; j <= k; j++)
+                    str += s[i + j];
+                i += k;
+                cur = "";
+                cout << str << endl;
+            }
+        }
+        string res;
+        for (char c : str)
+            if (c != '1')
+                res += c;
+        return res;
+    }
+};
