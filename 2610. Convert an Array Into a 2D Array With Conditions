@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<vector<int>> findMatrix(vector<int>& nums) {
+        vector<int> dis(nums.size() + 1, 0);
+        int len = 0;
+        for (int i : nums) {
+            dis[i]++;
+            len++;
+        }
+        vector<vector<int>> mat;
+        vector<int> row;
+        while (len > 0) {
+            for (int i = 1; i < dis.size(); i++) {
+                if (dis[i] != 0) {
+                    len--;
+                    row.push_back(i);
+                    dis[i]--;
+                }
+            }
+            if (row.size())
+                mat.push_back(row);
+            row.clear();
+        }
+        return mat;
+    }
+};
