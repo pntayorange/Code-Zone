@@ -1,0 +1,33 @@
+class Solution {
+public:
+    int minSetSize(vector<int>& arr) {
+        map<int, int> freqMap;
+        for (int num : arr) {
+            freqMap[num]++;
+        }
+
+        vector<pair<int, int>> freqVec;
+        for (const auto& entry : freqMap) {
+            freqVec.push_back(entry);
+        }
+
+        sort(freqVec.begin(), freqVec.end(),
+             [](const pair<int, int>& a, const pair<int, int>& b) {
+                 return a.second > b.second;
+             });
+
+        int halfSize = arr.size() / 2;
+        int count = 0;
+        int sum = 0;
+
+        for (const auto& p : freqVec) {
+            sum += p.second;
+            count++;
+            if (sum >= halfSize) {
+                return count;
+            }
+        }
+
+        return count;
+    }
+};
