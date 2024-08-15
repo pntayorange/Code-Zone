@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int maxCoins(vector<int>& piles) {
+        sort(piles.begin(), piles.end(), [](int a, int b) { return a > b; });
+        int Alice = 0, Me = 0, Bob = 0;
+        for (int i = 0; i < piles.size() / 3; i++) {
+            // Alice += piles[i * 2];
+            Me += piles[i * 2 + 1];
+            // Bob += piles[piles.size() - 1 - i];
+        }
+        return Me;
+    }
+};
